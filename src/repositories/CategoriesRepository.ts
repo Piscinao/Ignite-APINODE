@@ -1,3 +1,4 @@
+import { List } from "realm";
 import { Category } from "../model/Category";
 
 // DTO - Data transfer object - objeto que é responsavel pela transferencia de uma classe e outra
@@ -29,8 +30,17 @@ class CategoriesRepository {
       created_at: new Date()
     });
   
-  
     this.categories.push(category);
+   
+  }
+
+  list(): Category[] {
+    return this.categories;
+  }
+
+  findByName(name: string): Category {
+    const category = this.categories.find((category) => category.name === name);
+    return category;
   }
 }
 
